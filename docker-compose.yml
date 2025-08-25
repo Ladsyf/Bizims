@@ -1,0 +1,61 @@
+services:
+  bizims.api:
+    image: ${DOCKER_REGISTRY-}bizimsapi
+    build:
+      context: .
+      dockerfile: Bizims.Api/Dockerfile
+    ports:
+      - 5186:8080
+    networks: 
+      - backend
+    depends_on:
+      - db
+
+  bizims.client:
+    build:
+      context: ./Bizims.Client
+      dockerfile: Dockerfile
+    container_name: bizims.client
+    ports:
+      - 5184:4200
+    volumes:
+      - ./Bizims.Client:/app
+      - /app/node_modules
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+
+  bizims.instance:
+    build:
+      context: ./Bizims.Instance
+      dockerfile: Dockerfile
+    container_name: bizims.instance
+    ports:
+      - 5185:4200
+    volumes:
+      - ./Bizims.Instance:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:latest
+    container_name: postgresdb
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: sa
+      POSTGRES_DB: sa
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "54322:5432"
+    networks:
+      - backend
+      
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge
