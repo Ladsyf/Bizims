@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Bizims.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class userstable : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,7 @@ namespace Bizims.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Business",
+                name: "Businesses",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -44,9 +44,9 @@ namespace Bizims.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Business", x => x.Id);
+                    table.PrimaryKey("PK_Businesses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Business_Users_UserId",
+                        name: "FK_Businesses_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -54,7 +54,7 @@ namespace Bizims.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BusinessSetting",
+                name: "BusinessSettings",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -63,23 +63,23 @@ namespace Bizims.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BusinessSetting", x => x.Id);
+                    table.PrimaryKey("PK_BusinessSettings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BusinessSetting_Business_BusinessId",
+                        name: "FK_BusinessSettings_Businesses_BusinessId",
                         column: x => x.BusinessId,
-                        principalTable: "Business",
+                        principalTable: "Businesses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Business_UserId",
-                table: "Business",
+                name: "IX_Businesses_UserId",
+                table: "Businesses",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessSetting_BusinessId",
-                table: "BusinessSetting",
+                name: "IX_BusinessSettings_BusinessId",
+                table: "BusinessSettings",
                 column: "BusinessId",
                 unique: true);
         }
@@ -88,10 +88,10 @@ namespace Bizims.Api.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BusinessSetting");
+                name: "BusinessSettings");
 
             migrationBuilder.DropTable(
-                name: "Business");
+                name: "Businesses");
 
             migrationBuilder.DropTable(
                 name: "Users");

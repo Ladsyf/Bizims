@@ -26,10 +26,29 @@ internal class Repository<TEntityModel> : IRepository<TEntityModel> where TEntit
             .FirstOrDefaultAsync(condition);
     }
 
+    public async Task<TEntityModel?> FindByAsync(Expression<Func<TEntityModel, bool>> condition, Func<IQueryable<TEntityModel>, IQueryable<TEntityModel>> extendQuery)
+    {
+        var queryableEntities = _dbSet
+            .AsNoTracking();
+
+        return await extendQuery(queryableEntities)
+            .FirstOrDefaultAsync(condition);
+    }
+
     public async Task<IReadOnlyList<TEntityModel>> FindAllByAsync(Expression<Func<TEntityModel, bool>> condition)
     {
         return await _dbSet
             .AsNoTracking()
+            .Where(condition)
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<TEntityModel>> FindAllByAsync(Expression<Func<TEntityModel, bool>> condition, Func<IQueryable<TEntityModel>, IQueryable<TEntityModel>> extendQuery)
+    {
+        var queryableEntities = _dbSet
+            .AsNoTracking();
+
+        return await extendQuery(queryableEntities)
             .Where(condition)
             .ToListAsync();
     }

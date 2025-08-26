@@ -6,7 +6,7 @@ namespace Bizims.Application.Users.Factories;
 
 public class UserFactory : IUserFactory
 {
-    public User Create(CreateOrUpdateRequestApiDto request)
+    public User Create(CreateOrUpdateUserRequestApiDto request)
     {
         var hashedPassword = new PasswordHasher<User>()
             .HashPassword(null, request.Password);

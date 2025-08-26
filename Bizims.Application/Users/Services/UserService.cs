@@ -28,7 +28,7 @@ internal class UserService : IUserService
         _userApiMapper = userApiMapper;
     }
 
-    public async Task InsertAsync(CreateOrUpdateRequestApiDto request)
+    public async Task InsertAsync(CreateOrUpdateUserRequestApiDto request)
     {
         await _userValidationService.ValidateCreateAsync(request);
 
@@ -48,7 +48,7 @@ internal class UserService : IUserService
         return _userApiMapper.ToDto(user);
     }
 
-    public async Task UpdateAsync(Guid id, CreateOrUpdateRequestApiDto request)
+    public async Task UpdateAsync(Guid id, CreateOrUpdateUserRequestApiDto request)
     {
         await _repository.UpdateAsync(x => x.Id == id, user =>
         {

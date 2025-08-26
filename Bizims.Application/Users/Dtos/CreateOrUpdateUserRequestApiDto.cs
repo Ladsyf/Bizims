@@ -1,6 +1,6 @@
 ﻿namespace Bizims.Application.Users.Dtos;
 
-public class CreateOrUpdateRequestApiDto
+public class CreateOrUpdateUserRequestApiDto
 {
     public required string Username { get; set; }
     public required string Email { get; set; }

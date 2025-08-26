@@ -1,6 +1,6 @@
 ﻿namespace Bizims.Application.Businesses.Dtos;
 
-public class CreateBusinessApiDto
+public class CreateOrUpdateBusinessApiDto
 {
     public required string Name { get; set; }
     public string? Description { get; set; }

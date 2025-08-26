@@ -5,6 +5,6 @@ namespace Bizims.Application.Users.Factories
 {
     public interface IUserFactory
     {
-        User Create(CreateOrUpdateRequestApiDto request);
+        User Create(CreateOrUpdateUserRequestApiDto request);
     }
 }

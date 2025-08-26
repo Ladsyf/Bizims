@@ -16,7 +16,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> InsertUserAsync([FromBody] CreateOrUpdateRequestApiDto request)
+    public async Task<IActionResult> InsertUserAsync([FromBody] CreateOrUpdateUserRequestApiDto request)
     { 
         await _userService.InsertAsync(request);
 

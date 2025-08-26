@@ -4,5 +4,5 @@ namespace Bizims.Application.Users.Services;
 
 internal interface IUserValidationService
 {
-    Task ValidateCreateAsync(CreateOrUpdateRequestApiDto request);
+    Task ValidateCreateAsync(CreateOrUpdateUserRequestApiDto request);
 }

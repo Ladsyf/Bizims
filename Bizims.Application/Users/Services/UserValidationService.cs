@@ -14,7 +14,7 @@ internal class UserValidationService : IUserValidationService
         _repository = repositoryManager.Repository<User>();
     }
 
-    public async Task ValidateCreateAsync(CreateOrUpdateRequestApiDto request)
+    public async Task ValidateCreateAsync(CreateOrUpdateUserRequestApiDto request)
     {
         var existingUser = await _repository.FindByAsync(x => x.Username == request.Username || x.Email == request.Email);
 

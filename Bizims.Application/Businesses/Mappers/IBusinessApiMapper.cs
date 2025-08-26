@@ -1,11 +1,9 @@
 ﻿using Bizims.Application.Businesses.Dtos;
 using Bizims.Domain.Models.Businesses;
 
-namespace Bizims.Application.Businesses.Mappers
+namespace Bizims.Application.Businesses.Mappers;
+
+internal interface IBusinessApiMapper
 {
-    public interface IBusinessApiMapper
-    {
-        BusinessApiDto ToApiDto(Business model);
-        Business ToModel(BusinessApiDto model);
-    }
+    BusinessApiDto ToApiDto(Business model);
 }

@@ -5,4 +5,6 @@ public interface IMultitenantProvider
 {
     Guid? BusinessId { get; }
     Guid? UserId { get; }
+
+    Guid GetUserId();
 }

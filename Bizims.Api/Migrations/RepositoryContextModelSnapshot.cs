@@ -50,7 +50,7 @@ namespace Bizims.Api.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Business");
+                    b.ToTable("Businesses");
                 });
 
             modelBuilder.Entity("Bizims.Domain.Models.Businesses.BusinessSetting", b =>
@@ -72,7 +72,7 @@ namespace Bizims.Api.Migrations
                     b.HasIndex("BusinessId")
                         .IsUnique();
 
-                    b.ToTable("BusinessSetting");
+                    b.ToTable("BusinessSettings");
                 });
 
             modelBuilder.Entity("Bizims.Domain.Models.Users.User", b =>

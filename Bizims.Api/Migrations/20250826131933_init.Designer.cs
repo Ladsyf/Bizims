@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bizims.Api.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250825113008_userstable")]
-    partial class userstable
+    [Migration("20250826131933_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,7 @@ namespace Bizims.Api.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Business");
+                    b.ToTable("Businesses");
                 });
 
             modelBuilder.Entity("Bizims.Domain.Models.Businesses.BusinessSetting", b =>
@@ -75,7 +75,7 @@ namespace Bizims.Api.Migrations
                     b.HasIndex("BusinessId")
                         .IsUnique();
 
-                    b.ToTable("BusinessSetting");
+                    b.ToTable("BusinessSettings");
                 });
 
             modelBuilder.Entity("Bizims.Domain.Models.Users.User", b =>
